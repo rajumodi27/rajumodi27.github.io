@@ -25,7 +25,7 @@ const prettyCodeOptions = {
 
 // https://astro.build/config
 export default defineConfig({
-    site: 'https://0xdedinfosec.vercel.app/',
+    site: 'https://rajumodi27.github.io/',
     integrations: [tailwind(), react(), mdx(), sitemap()],
     markdown: {
         syntaxHighlight: false,

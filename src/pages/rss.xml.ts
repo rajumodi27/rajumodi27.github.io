@@ -11,7 +11,7 @@ export async function GET(context: APIContext) {
         title: '0xDedinfosec Blogs',
         description:
             'I post My Hackthebox writeups and other InfoSec findings here.',
-        site: context.site || 'https://0xdedinfosec.vercel.app',
+        site: context.site || 'https://rajumodi27.github.io',
         items: sortedPosts.map((post) => ({
             title: post.data.title,
             pubDate: post.data.date,
