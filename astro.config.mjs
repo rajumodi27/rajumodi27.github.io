@@ -7,15 +7,18 @@ import rehypeSlug from 'rehype-slug';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import rehypePrettyCode from 'rehype-pretty-code';
 import sitemap from '@astrojs/sitemap';
+
 const prettyCodeOptions = {
     theme,
     onVisitHighlightedLine(node) {
         node?.properties?.className?.push('highlight-line');
     },
     onVisitHighlightedChars(node) {
-        node?.properties?.className
-            ? node.properties.className.push('highlighted-chars')
-            : (node.properties.className = ['highlighted-chars']);
+        if (node?.properties?.className) {
+            node.properties.className.push('highlighted-chars');
+        } else {
+            node.properties.className = ['highlighted-chars'];
+        }
     },
     tokensMap: {},
 };
