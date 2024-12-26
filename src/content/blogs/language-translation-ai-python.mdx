@@ -1,0 +1,77 @@
+---
+title: Introduction to Language Translation AI
+slug: language-translation-ai-python
+description: Exploring the development of a real-time speech-to-text translator in Python, leveraging multiple libraries for voice recognition and language translation capabilities.
+date: 2024-02-25
+image: language-translation-ai.webp
+---
+
+import FixTheImageURL from '../../components/mdxComponents/FixTheImageURL.astro';
+import { components as MDXComponents } from '../../components/mdxComponents';
+export const components = MDXComponents;
+
+## Project Overview
+
+```python
+# Core Libraries Used
+import speech_recognition 
+import pyttsx3
+from translate import Translator
+from gtts import gTTS
+import playsound
+```
+
+## Speech Recognition Implementation
+
+The application uses `speech_recognition` to capture voice input through the microphone. Here's how the core speech recognition works:
+
+```python
+def capture_voice():
+    recognizer = speech_recognition.Recognizer()
+    with speech_recognition.Microphone() as source:
+        print("Listening...")
+        audio = recognizer.listen(source)
+        return recognizer.recognize_google(audio)
+```
+
+## Translation Engine
+
+The translation engine supports multiple languages through the `translate` library:
+
+```python
+def translate_text(text, target_lang):
+    translator = Translator(to_lang=target_lang)
+    return translator.translate(text)
+```
+
+## Text-to-Speech Output
+
+Voice output is handled by gTTS for natural-sounding translations:
+
+```python
+def speak_translation(text, language):
+    tts = gTTS(text=text, lang=language)
+    tts.save("translation.mp3")
+    playsound.playsound("translation.mp3")
+```
+
+## Key Features
+
+- Real-time voice recognition
+- Support for 50+ languages
+- Natural speech synthesis
+- Minimal latency
+- Error handling for unclear speech
+- Language auto-detection
+
+## Future Improvements
+
+1. Offline translation support
+2. Dialect recognition
+3. Custom voice models
+4. Conversation memory
+5. Improved accuracy for technical terms
+
+The full source code is available on my [GitHub](https://github.com/RAJUMODI27/Language_conversion_Ai).
+
+<FixTheImageURL src='translation-demo.png' slug='language-translation-ai-python' />

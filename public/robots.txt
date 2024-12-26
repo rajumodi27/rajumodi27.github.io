@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://0xdedinfosec.vercel.app/sitemap-index.xml
+Sitemap: https://rajumodi27.github.io/sitemap-index.xml
