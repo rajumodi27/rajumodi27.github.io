@@ -1,0 +1,72 @@
+---
+title: Getting Started with Rust | Your First Steps Towards Memory Safety and Concurrency
+slug: getting-started-rust
+description: A simple introduction to Rust programming by building the classic "Hello, World!"
+date: 2024-02-26
+image: getting-started-rust.webp
+---
+
+import FixTheImageURL from '../../components/mdxComponents/FixTheImageURL.astro';
+import { components as MDXComponents } from '../../components/mdxComponents';
+export const components = MDXComponents;
+
+## Project Overview
+
+Rust is a systems programming language known for its focus on speed, memory safety, and concurrency. This blog expands upon the "Hello, World!" program in Rust, introducing some of the language's core features such as ownership, borrowing, and concurrency.
+
+```rust
+// Rust Hello World Example
+fn main() {
+    println!("Hello, world!");
+}
+```
+
+## Code Breakdown
+
+The code is simple, but it demonstrates key Rust concepts:
+
+1. **`fn main()`**: The entry point of the program, where execution starts.
+2. **`println!`**: A macro that prints the text to the console. The `!` indicates it’s a macro, not a function.
+3. **The text inside the quotes**: This is the message printed to the screen—"Hello, world!".
+
+## Memory Safety in Rust
+
+Rust ensures memory safety without the need for a garbage collector, preventing common issues like memory leaks and data races. The ownership and borrowing model is central to this safety.
+
+```rust
+// Ownership and Borrowing Example
+fn main() {
+    let s = String::from("Rust");
+    let t = &s;  // Borrowing reference
+    println!("{}", t);
+}
+```
+
+This example demonstrates borrowing—a concept in Rust that allows a variable to be used without taking ownership of it, ensuring safe memory usage.
+
+## Why Rust?
+
+- **Performance**: Comparable to C and C++.
+- **Safety**: Prevents issues like null pointer dereferencing and data races.
+- **Concurrency**: Tools for safe concurrency are built into the language.
+
+## Key Features
+
+- Zero-cost abstractions
+- Memory safety without a garbage collector
+- Powerful concurrency features
+- Cross-platform capabilities
+
+## Future Learning Paths
+
+Once you're comfortable with the basics, you can:
+1. Explore ownership and borrowing in depth.
+2. Learn about Rust’s robust error handling system with `Result` and `Option`.
+3. Begin building web servers and CLI applications using Rust’s rich ecosystem.
+4. Dive into Rust’s concurrency model to write safe, parallel applications.
+
+The full source code is available on my [GitHub](https://github.com/rajumodi27s/hello-world-rust).
+
+<FixTheImageURL src='getting-started-demo.png' slug='getting-started-rust' /> 
+
+---

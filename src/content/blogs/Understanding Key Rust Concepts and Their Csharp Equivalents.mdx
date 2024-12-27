@@ -1,0 +1,217 @@
+---
+title: Introduction to Rust to C sharp Concept Mapping  
+slug: rust-to-csharp-concepts  
+description: A concise comparison of key Rust concepts and their C# equivalents for developers transitioning between these languages.  
+date: 2024-12-27  
+image: rust-to-csharp-concepts.webp  
+
+---  
+
+import FixTheImageURL from '../../components/mdxComponents/FixTheImageURL.astro';  
+import { components as MDXComponents } from '../../components/mdxComponents';  
+export const components = MDXComponents;
+
+## Project Overview
+
+When transitioning from Rust to C#, understanding the core concepts and how they map across languages is essential. Both are powerful, modern programming languages, but they serve different purposes and have distinct syntax and paradigms. This blog highlights key concepts in Rust and their equivalents in C#, providing developers a clear mapping to help ease the transition.
+
+---
+
+### 1. **Mutable Variables**  
+   In Rust, variables are immutable by default, and you can make them mutable using the `mut` keyword. In C#, variables are mutable by default, and references can be passed using the `ref` keyword.
+
+   **Rust Example**:  
+   ```rust
+   let mut x = 5;
+   x = 10;  // Mutability
+   ```
+
+   **C# Equivalent**:  
+   ```csharp
+   int x = 5;
+   x = 10;  // Mutability
+   ```
+
+---
+
+### 2. **Functions**  
+   Rust functions are defined using the `fn` keyword, while in C#, they are defined as methods within classes or structs.
+
+   **Rust Example**:  
+   ```rust
+   fn greet() {
+       println!("Hello, World!");
+   }
+   ```
+
+   **C# Equivalent**:  
+   ```csharp
+   class Program {
+       static void Greet() {
+           Console.WriteLine("Hello, World!");
+       }
+   }
+   ```
+
+---
+
+### 3. **Datatypes**  
+   Rust has various primitive data types like integers, floats, and booleans, which map to C#'s equivalent data types.
+
+   **Rust Example**:  
+   ```rust
+   let x: i32 = 5;
+   let y: f64 = 3.14;
+   let is_active: bool = true;
+   ```
+
+   **C# Equivalent**:  
+   ```csharp
+   int x = 5;
+   double y = 3.14;
+   bool isActive = true;
+   ```
+
+---
+
+### 4. **References (`&`)**  
+   In Rust, references are denoted with `&`, while C# uses `ref` for passing parameters by reference.
+
+   **Rust Example**:  
+   ```rust
+   fn print_value(val: &i32) {
+       println!("{}", val);
+   }
+   ```
+
+   **C# Equivalent**:  
+   ```csharp
+   void PrintValue(ref int val) {
+       Console.WriteLine(val);
+   }
+   ```
+
+---
+
+### 5. **Loops**  
+   Rust provides three types of loops: `for`, `while`, and `loop`. C# uses `for`, `while`, and `do-while` loops, which function similarly.
+
+   **Rust Example**:  
+   ```rust
+   for i in 0..5 {
+       println!("{}", i);
+   }
+   ```
+
+   **C# Equivalent**:  
+   ```csharp
+   for (int i = 0; i < 5; i++) {
+       Console.WriteLine(i);
+   }
+   ```
+
+---
+
+### 6. **Printing Output**  
+   In Rust, the `println!` macro is used for printing output, whereas in C#, `Console.WriteLine` is used.
+
+   **Rust Example**:  
+   ```rust
+   println!("Hello, World!");
+   ```
+
+   **C# Equivalent**:  
+   ```csharp
+   Console.WriteLine("Hello, World!");
+   ```
+
+---
+
+### 7. **Vectors**  
+   Rust’s `Vec<T>` is a dynamic array, which is similar to C#'s `List<T>`.
+
+   **Rust Example**:  
+   ```rust
+   let v = vec![1, 2, 3];
+   ```
+
+   **C# Equivalent**:  
+   ```csharp
+   List<int> list = new List<int> {1, 2, 3};
+   ```
+
+---
+
+### 8. **Access Modifiers**  
+   The `pub` keyword in Rust makes items public. In C#, we use access modifiers like `public`, `private`, and `protected`.
+
+   **Rust Example**:  
+   ```rust
+   pub fn public_function() {}
+   ```
+
+   **C# Equivalent**:  
+   ```csharp
+   public void PublicFunction() {}
+   ```
+
+---
+
+### 9. **Modules and Namespaces**  
+   In Rust, modules are used to organize code. In C#, we use namespaces for the same purpose.
+
+   **Rust Example**:  
+   ```rust
+   mod my_module {
+       pub fn hello() {
+           println!("Hello, World!");
+       }
+   }
+   ```
+
+   **C# Equivalent**:  
+   ```csharp
+   namespace MyNamespace {
+       class Program {
+           public static void Hello() {
+               Console.WriteLine("Hello, World!");
+           }
+       }
+   }
+   ```
+
+---
+
+### 10. **Assemblies**  
+   Rust compiles to executables or libraries, just like C# does with `DLL` or `EXE` files.
+
+   **Rust Example**:  
+   Compile with `cargo build` to produce a `.exe` or `.dll` (on Windows).
+
+   **C# Equivalent**:  
+   Use Visual Studio or the `dotnet` CLI to build `.exe` or `.dll` files.
+
+---
+
+### 11. **Macros and Source Generators**  
+   Rust uses `macro_rules!` for metaprogramming, while C# leverages source generators as an advanced feature for generating code during compilation.
+
+   **Rust Example**:  
+   ```rust
+   macro_rules! say_hello {
+       () => {
+           println!("Hello from macro!");
+       };
+   }
+   ```
+
+   **C# Equivalent**:  
+   C#’s source generators use the `SourceGenerator` class in the Roslyn API to generate code at compile-time.
+
+---
+
+### Conclusion  
+Rust and C# are both powerful, but they offer different paradigms and features. By understanding these core concepts and their counterparts, developers can smoothly transition between these languages, making the most out of each language's strengths.
+
+--- 
+
