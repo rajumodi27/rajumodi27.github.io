@@ -1,0 +1,68 @@
+---
+title: Introduction to Hello World in Rust
+slug: hello-world-rust
+description: A simple introduction to Rust programming by building the classic "Hello, World!" program in Rust.
+date: 2024-02-25
+image: hello-world-rust.webp
+---
+
+import FixTheImageURL from '../../components/mdxComponents/FixTheImageURL.astro';
+import { components as MDXComponents } from '../../components/mdxComponents';
+export const components = MDXComponents;
+
+## Project Overview
+
+Rust is a systems programming language focused on speed, memory safety, and concurrency. In this project, we’ll create the classic “Hello, World!” program in Rust as an introduction.
+
+```rust
+// Rust Hello World Example
+fn main() {
+    println!("Hello, world!");
+}
+```
+
+## Code Breakdown
+
+The code is simple, but it introduces some core concepts of Rust:
+
+1. **`fn main()`**: This is the entry point of the Rust program. It is where execution starts.
+2. **`println!`**: A macro that prints text to the console. The `!` indicates that it is a macro, not a function.
+3. **The text inside the quotes**: This is the message printed to the screen, in this case, `"Hello, world!"`.
+
+## Rust’s Memory Safety
+
+One of the key features of Rust is its ability to ensure memory safety. The language prevents memory leaks and data races without the need for a garbage collector, which makes it unique compared to other programming languages.
+
+```rust
+// Ownership and Borrowing Example
+fn main() {
+    let s = String::from("Rust");
+    let t = &s;  // Borrowing reference
+    println!("{}", t);
+}
+```
+
+## Why Rust?
+
+- **Performance**: Comparable to C and C++.
+- **Safety**: Prevents null pointer dereferencing and data races.
+- **Concurrency**: Rust provides tools for safe concurrency.
+
+## Key Features
+
+- Zero-cost abstractions
+- Memory safety without a garbage collector
+- Powerful concurrency features
+- Cross-platform capabilities
+
+## Future Learning Paths
+
+Once you’re comfortable with “Hello, World!” in Rust, you can:
+1. Explore ownership and borrowing in-depth.
+2. Learn about Rust’s powerful error handling system with `Result` and `Option`.
+3. Start working with Rust’s rich ecosystem for web servers and CLI applications.
+4. Understand Rust’s concurrency model to write safe, parallel applications.
+
+The full source code is available on my [GitHub](https://github.com/rajumodi27s/hello-world-rust).
+
+<FixTheImageURL src='hello-world-demo.png' slug='hello-world-rust' />
