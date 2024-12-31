@@ -1,0 +1,100 @@
+---
+title: Understanding the Hierarchy of .NET Technologies
+slug: hierarchy-of-dotnet-technologies
+description: A guide to understanding the various components of the .NET ecosystem and what each part can build.
+date: 2024-02-25
+image: dotnet-hierarchy.webp
+---
+
+import FixTheImageURL from '../../components/mdxComponents/FixTheImageURL.astro';
+import { components as MDXComponents } from '../../components/mdxComponents';
+export const components = MDXComponents;
+
+## Introduction
+
+The .NET ecosystem is a powerful framework for building a wide range of applications, from web apps to mobile apps and desktop solutions. Understanding the hierarchy of .NET technologies helps clarify the various components and how they work together to provide the tools needed for modern application development.
+
+In this blog post, we will explore the hierarchy of .NET technologies and what each part of the ecosystem can build. Whether you're building a web application, a mobile app, or a desktop application, there is a .NET technology suited to your needs.
+
+---
+
+## Hierarchy of .NET Technologies
+
+The .NET ecosystem consists of several layers and components. Here's a simplified breakdown of the key parts:
+
+### .NET Framework
+- **Type**: Older, Windows-only version of the .NET framework.
+- **What it can build**:
+  - **Web Applications**: Using ASP.NET (Web Forms, MVC).
+  - **Console Applications**: Command-line tools.
+  - **Desktop Applications**: WinForms and WPF (Windows-only).
+  - **Libraries & Services**: Libraries and Windows services specific to the Windows platform.
+
+While powerful for Windows-based development, the .NET Framework is limited to the Windows operating system and does not provide cross-platform support.
+
+---
+
+### .NET Core
+- **Type**: Modern, cross-platform version of .NET.
+- **What it can build**:
+  - **Web Applications**: Using ASP.NET Core (MVC, Razor Pages, Web API).
+  - **Console Applications**: Cross-platform command-line tools that work on Windows, macOS, and Linux.
+  - **Desktop Applications**: WinForms and WPF for Windows, along with MAUI for cross-platform development.
+  - **Libraries & Services**: Cross-platform libraries and general-purpose services that can run on any operating system.
+
+.NET Core is a significant improvement over the .NET Framework because it offers cross-platform capabilities, enabling developers to create applications that run on Windows, macOS, and Linux.
+
+---
+
+### ASP.NET Core
+- **Type**: A framework under .NET Core used specifically for building web applications and APIs.
+- **What it can build**:
+  - **Web Applications**: Using MVC and Razor Pages for building dynamic and page-focused web apps.
+  - **Web APIs**: RESTful services that allow apps to communicate and interact with other applications or clients.
+
+ASP.NET Core is ideal for building modern, high-performance, and scalable web applications and services. It is a lightweight and fast framework, which makes it the preferred choice for many web developers.
+
+---
+
+### Xamarin (Now part of MAUI)
+- **Type**: Used for building cross-platform mobile apps.
+- **What it can build**:
+  - **Mobile Applications**: Xamarin allows you to build native mobile apps for iOS and Android using a shared codebase.
+
+Xamarin was initially designed for cross-platform mobile development, and while it has now been integrated into MAUI (Multi-platform App UI), it laid the foundation for creating mobile apps that run on multiple platforms with a single codebase.
+
+---
+
+### MAUI (Multi-platform App UI)
+- **Type**: A cross-platform UI framework introduced in .NET 6 and beyond.
+- **What it can build**:
+  - **Mobile Applications**: MAUI supports building mobile apps for both Android and iOS.
+  - **Desktop Applications**: MAUI can also be used for creating desktop applications for Windows and macOS.
+
+MAUI is the successor to Xamarin, providing a unified framework to build applications that run across all major platforms (Android, iOS, Windows, and macOS) with a single codebase. It simplifies the process of building cross-platform applications and is the future of .NET mobile and desktop development.
+
+---
+
+## Summary of What Each Can Build
+
+Here's a quick summary of what each .NET technology can build:
+
+- **.NET Core**: Can build web apps (using ASP.NET Core), console apps, desktop apps (using WinForms, WPF, and MAUI), and cross-platform libraries and services.
+- **.NET Framework**: Builds web apps (with ASP.NET), console apps, desktop apps (with WinForms, WPF), but is limited to Windows.
+- **ASP.NET Core**: A part of .NET Core for building web applications and web APIs.
+- **Xamarin**: Focused on mobile apps for iOS and Android (now replaced by MAUI).
+- **MAUI**: A modern solution for cross-platform apps that run on Windows, macOS, Android, and iOS.
+
+---
+
+## Conclusion
+
+The .NET ecosystem provides a wide variety of technologies for building applications, whether you're working on a web app, a desktop solution, or a mobile app. Understanding the hierarchy of .NET technologies helps you choose the right tools for the job, whether you need cross-platform support, high performance, or a specific platform-focused solution.
+
+As the .NET ecosystem continues to evolve, technologies like .NET Core and MAUI offer more flexibility and power for developers, allowing them to create modern, cross-platform applications that reach a broad audience.
+
+---
+
+**Thank you for reading!** Stay tuned for more in-depth articles on specific .NET technologies and how you can use them to build great applications.
+
+<FixTheImageURL src='dotnet-technologies.png' slug='hierarchy-of-dotnet-technologies' />
