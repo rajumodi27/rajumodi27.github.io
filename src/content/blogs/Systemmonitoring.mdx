@@ -1,0 +1,99 @@
+---
+title: CyberSentinel – Focuses on cybersecurity monitoring
+slug: cybersentinel-rust
+description: A simple Rust script to audit Windows security settings, including firewall status, admin privileges, and installed updates.
+date: 2024-02-26
+image: hardeningkitty-rust.webp
+---
+
+import FixTheImageURL from '../../components/mdxComponents/FixTheImageURL.astro';
+import { components as MDXComponents } from '../../components/mdxComponents';
+export const components = MDXComponents;
+
+## Project Overview
+
+Writing a full equivalent of CyberSentinel in Rust would be a large project, as it involves scanning various Windows security settings. However, this blog introduces a basic Rust script that performs simple security audits on Windows, such as checking firewall status, user privileges, and installed security updates.
+
+## Key Features
+
+- ✅ Checks if Windows Defender Firewall is enabled.
+- ✅ Checks if the current user has administrator privileges.
+- ✅ Retrieves installed Windows updates to check patch history.
+
+## Rust Script: Basic Windows Security Checker
+
+This script uses the `winreg` crate to access the Windows Registry and check security settings.
+
+```rust
+use std::process::Command;
+use winreg::enums::*;
+use winreg::RegKey;
+
+/// Function to check if Windows Defender Firewall is enabled
+fn check_firewall_status() {
+    let output = Command::new("netsh")
+        .args(&["advfirewall", "show", "allprofiles"])
+        .output()
+        .expect("Failed to check firewall status");
+
+    let result = String::from_utf8_lossy(&output.stdout);
+
+    if result.contains("State ON") {
+        println!("✅ Windows Defender Firewall is ENABLED.");
+    } else {
+        println!("❌ Windows Defender Firewall is DISABLED.");
+    }
+}
+
+/// Function to check if the user has administrator privileges
+fn check_admin_privileges() {
+    let output = Command::new("net")
+        .args(&["session"])
+        .output();
+
+    match output {
+        Ok(_) => println!("✅ User has ADMIN privileges."),
+        Err(_) => println!("⚠️ User does NOT have admin privileges."),
+    }
+}
+
+/// Function to list installed Windows updates
+fn check_installed_updates() {
+    let hklm = RegKey::predef(HKEY_LOCAL_MACHINE);
+    let updates_path = r"SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall";
+    
+    match hklm.open_subkey(updates_path) {
+        Ok(subkey) => {
+            println!("\n📋 Installed Windows Updates:");
+            for update in subkey.enum_keys().filter_map(|k| k.ok()) {
+                println!("- {}", update);
+            }
+        }
+        Err(_) => println!("❌ Failed to retrieve installed updates."),
+    }
+}
+
+fn main() {
+    println!("🔍 Running Windows Security Check...");
+    check_firewall_status();
+    check_admin_privileges();
+    check_installed_updates();
+}
+```
+
+## How This Script Works
+
+1. **Firewall Check** – Uses the `netsh` command to verify if Windows Defender Firewall is enabled.
+2. **Admin Privilege Check** – Uses the `net session` command to determine if the user has administrator rights.
+3. **Windows Updates Check** – Reads the Windows Registry (`HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall`) to list installed updates.
+
+## Enhancements & Future Improvements
+
+✅ Add BitLocker status check.
+✅ Check if Antivirus is enabled.
+✅ Verify Windows Defender real-time protection settings.
+✅ Generate detailed security reports.
+
+Would you like additional features in this Rust security audit tool? 😊
+
+<FixTheImageURL src='hardeningkitty-rust-demo.png' slug='hardeningkitty-rust' />
