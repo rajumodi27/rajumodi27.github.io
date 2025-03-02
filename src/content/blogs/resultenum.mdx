@@ -1,0 +1,108 @@
+---
+title: "Understanding Result Enum, unwrap(), and unwrap_or() in Rust"
+date: 2025-03-02
+author: "Rust Enthusiast"
+description: "A beginner-friendly guide to Rust's Result enum, including unwrap() and unwrap_or() with examples."
+image: "/images/result_enum.png"
+---
+
+## Introduction
+
+In Rust, handling errors safely is crucial. Rust provides the `Result` enum to represent **success** (`Ok(value)`) and **failure** (`Err(error)`). This blog will cover:
+
+- What is the `Result` enum?
+- How to use `unwrap()` and `unwrap_or()` safely
+- Examples demonstrating when `unwrap()` panics and when it doesn’t
+
+---
+
+## What is the `Result` Enum?
+
+The `Result<T, E>` enum is used to handle operations that might fail. It has two variants:
+
+```rust
+enum Result<T, E> {
+    Ok(T),  // Represents a success
+    Err(E), // Represents an error
+}
+```
+
+### Example: Using `Result`
+```rust
+fn divide(a: i32, b: i32) -> Result<i32, &'static str> {
+    if b == 0 {
+        Err("Cannot divide by zero")
+    } else {
+        Ok(a / b)
+    }
+}
+
+fn main() {
+    let result = divide(10, 2);
+    match result {
+        Ok(value) => println!("Division successful: {}", value),
+        Err(error) => println!("Error: {}", error),
+    }
+}
+```
+
+---
+
+## `unwrap()` - Extracting Values from `Result`
+
+The `.unwrap()` function extracts the value inside `Ok(value)`. However, if the `Result` is `Err`, it **panics** and crashes the program.
+
+### ✅ Example: `unwrap()` works without panic
+```rust
+fn main() {
+    let x: Result<i32, &str> = Ok(10);
+    let value = x.unwrap(); // Extracts 10 successfully
+    println!("Unwrapped value: {}", value);
+}
+```
+**Output:**
+```
+Unwrapped value: 10
+```
+
+### ❌ Example: `unwrap()` panics
+```rust
+fn main() {
+    let x: Result<i32, &str> = Err("Something went wrong!");
+    let value = x.unwrap(); // Panics and crashes
+    println!("Unwrapped value: {}", value);
+}
+```
+**Output:**
+```
+thread 'main' panicked at 'called `Result::unwrap()` on an `Err` value: "Something went wrong!"'
+```
+
+---
+
+## `unwrap_or()` - Providing a Default Value
+
+Instead of panicking, `.unwrap_or(default_value)` provides a **fallback** when `Err` occurs.
+
+### ✅ Example: Preventing Panic with `unwrap_or()`
+```rust
+fn main() {
+    let x: Result<i32, &str> = Err("Something went wrong!");
+    let value = x.unwrap_or(-1); // Returns -1 instead of panicking
+    println!("Value: {}", value);
+}
+```
+**Output:**
+```
+Value: -1
+```
+
+---
+
+## Conclusion
+
+- Use `unwrap()` **only when you are sure** the `Result` is `Ok(value)`.
+- Use `unwrap_or(default_value)` to **avoid panics** by providing a safe fallback.
+- Always handle `Result` properly using `match` or error-handling functions.
+
+Rust makes error handling safe and predictable. Happy coding! 🚀
