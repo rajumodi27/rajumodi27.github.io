@@ -1,0 +1,71 @@
+---
+title: "Understanding Closures in Rust"
+date: 2025-03-03
+author: "Your Name"
+description: "A beginner-friendly guide to closures in Rust, explaining their syntax, usage, and real-world examples."
+image: "/path-to-your-image.jpg" # Replace with actual image URL
+---
+
+# Understanding Closures in Rust
+
+Rust provides a powerful feature called **closures**, which are anonymous functions that can be stored in variables or passed as arguments. They are commonly used in functional programming patterns and iterator methods.
+
+## Closure Syntax
+
+Closures in Rust use the `| ... |` syntax to define parameters, followed by the function body.
+
+### Example 1: Basic Closure
+```rust
+let add_one = |x| x + 1;
+println!("{}", add_one(5)); // Output: 6
+```
+- `|x|` represents the closure's parameter.
+- The body `x + 1` is the function logic.
+- `add_one(5)` calls the closure, returning `6`.
+
+### Example 2: Multiple Parameters
+```rust
+let multiply = |a, b| a * b;
+println!("{}", multiply(3, 4)); // Output: 12
+```
+Closures can accept multiple parameters, just like normal functions.
+
+## Closures in Iterators
+Closures are heavily used in Rust’s iterator methods like `map`, `filter`, and `for_each`.
+
+```rust
+let numbers = vec![1, 2, 3];
+let doubled: Vec<i32> = numbers.iter().map(|x| x * 2).collect();
+println!("{:?}", doubled); // Output: [2, 4, 6]
+```
+- `map(|x| x * 2)` applies the closure to each element in `numbers`.
+- `collect()` gathers the results into a new vector.
+
+## Capturing Environment Variables
+Closures can **capture** variables from their surrounding scope.
+
+```rust
+let factor = 2;
+let multiply_by_factor = |x| x * factor;
+println!("{}", multiply_by_factor(5)); // Output: 10
+```
+- The closure captures `factor` and uses it inside the function.
+
+## Closure Types
+Rust classifies closures into three traits based on how they use captured variables:
+1. **Fn** - Borrows captured variables (`&T`).
+2. **FnMut** - Mutably borrows captured variables (`&mut T`).
+3. **FnOnce** - Takes ownership of captured variables (`T`).
+
+```rust
+fn call_closure<F: Fn(i32)>(closure: F) {
+    closure(10);
+}
+let print_num = |x| println!("Number: {}", x);
+call_closure(print_num);
+```
+
+## Conclusion
+Closures in Rust provide a flexible way to define inline functions, especially for iterator operations and functional-style programming. Understanding closures helps you write more concise and efficient Rust code!
+
+Do you use closures in your Rust projects? Let me know in the comments! 🚀
